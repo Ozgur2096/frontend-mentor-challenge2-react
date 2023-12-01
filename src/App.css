@@ -10,6 +10,11 @@
   --alabaster: hsl(231, 100%, 99%);
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   display: flex;
   align-items: center;
@@ -24,7 +29,7 @@
   padding: 10px;
   border-radius: 10px;
   display: flex;
-  height: 500px;
+  height: 550px;
   background-color: white;
 }
 /* SIDEBAR */
@@ -44,8 +49,14 @@
 }
 .step-element-number {
   border: 1px solid white;
-  border-radius: 50%;
   color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
 }
 .step-element-title {
   color: var(--cool-gray);
