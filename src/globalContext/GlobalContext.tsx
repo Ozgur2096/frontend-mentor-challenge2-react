@@ -2,28 +2,30 @@ import React, { useState, createContext, ReactNode } from 'react';
 
 // Interfaces
 interface ContextValue {
-  mainContent: number;
-  changeMainContent: () => void;
+  mainContentIndex: number;
+  changeMainContentIndex: (n: number) => void;
 }
 interface GlobalContextProps {
   children: ReactNode;
 }
 // create context
-const GlobalContext = createContext<ContextValue>({
-  mainContent: 1,
-  changeMainContent: () => {},
+export const GlobalContext = createContext<ContextValue>({
+  mainContentIndex: 1,
+  changeMainContentIndex: (newIndex: number) => {},
 });
 
 export const GlobalContextProvider: React.FC<GlobalContextProps> = ({
   children,
 }) => {
-  const [mainContent, setMainContent] = useState(1);
+  const [mainContentIndex, setMainContentIndex] = useState(1);
 
-  const changeMainContent = () => {};
+  const changeMainContentIndex = (newIndex: number) => {
+    setMainContentIndex(newIndex);
+  };
 
   const contextValue: ContextValue = {
-    mainContent,
-    changeMainContent,
+    mainContentIndex,
+    changeMainContentIndex,
   };
 
   return (

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { GlobalContext } from '../globalContext/GlobalContext';
 
 interface StepElementProps {
   stepNumber: number;
@@ -11,8 +12,20 @@ export const StepElement: React.FC<StepElementProps> = ({
   stepTitle,
   stepInfo,
 }) => {
+  const { changeMainContentIndex } = useContext(GlobalContext);
+
+  const handleClick = (e: React.MouseEvent) => {
+    const target = e.currentTarget as HTMLElement;
+    changeMainContentIndex(+target.id);
+  };
   return (
-    <div className='step-element'>
+    <div
+      onClick={e => {
+        handleClick(e);
+      }}
+      id={stepNumber.toString()}
+      className='step-element'
+    >
       <div className='step-element-number'>{stepNumber}</div>
       <div>
         <div className='step-element-title'>{stepTitle}</div>
