@@ -1,5 +1,5 @@
 import React from 'react';
 
 export const Summary = () => {
-  return <div>Summary</div>;
+  return <main className='main-content-container'>Summary</main>;
 };

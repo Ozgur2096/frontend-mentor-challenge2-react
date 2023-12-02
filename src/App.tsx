@@ -7,6 +7,7 @@ import { MainContent } from './components/MainContent';
 function App() {
   return (
     <GlobalContextProvider>
+      <h1 className='project-title'>Multi-step Form</h1>
       <div className='App'>
         <div className='container'>
           <Sidebar />

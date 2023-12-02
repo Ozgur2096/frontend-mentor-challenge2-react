@@ -1,5 +1,5 @@
 import React from 'react';
 
 export const AddOns = () => {
-  return <div>AddOns</div>;
+  return <main className='main-content-container'>AddOns</main>;
 };

@@ -1,5 +1,5 @@
 import React from 'react';
 
 export const PersonalInfo = () => {
-  return <div>PersonalInfo</div>;
+  return <main className='main-content-container'>PersonalInfo</main>;
 };

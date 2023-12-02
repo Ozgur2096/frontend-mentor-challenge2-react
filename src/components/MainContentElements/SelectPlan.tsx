@@ -1,5 +1,5 @@
 import React from 'react';
 
 export const SelectPlan = () => {
-  return <div>SelectPlan</div>;
+  return <main className='main-content-container'>SelectPlan</main>;
 };
