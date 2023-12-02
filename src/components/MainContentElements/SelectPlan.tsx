@@ -5,9 +5,18 @@ export const SelectPlan = () => {
       <p>You have the option of monthly or yearly billing.</p>
       <div>
         <div className='select-plan-box-container'>
-          <div className='select-plan-box'>Arcade</div>
-          <div className='select-plan-box'>Advanced</div>
-          <div className='select-plan-box'>Pro</div>
+          <div className='select-plan-box'>
+            <div className='arcade-image'></div>
+            <div>Arcade</div>
+          </div>
+          <div className='select-plan-box'>
+            <div className='advanced-image'></div>
+            <div>Advanced</div>
+          </div>
+          <div className='select-plan-box'>
+            <div className='pro-image'></div>
+            <div>Pro</div>
+          </div>
         </div>
         <div className='select-plan-toggle'>
           <p>Monthly</p>
