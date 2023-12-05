@@ -82,6 +82,14 @@ body {
 
 .main-content-container {
 }
+/* Personal Info */
+.input-label {
+  display: flex;
+  justify-content: space-between;
+}
+.warning {
+  color: red;
+}
 /* Select Plan */
 .select-plan-box-container {
   display: flex;

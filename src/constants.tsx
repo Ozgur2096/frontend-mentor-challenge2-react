@@ -21,16 +21,19 @@ export const onlineService = {
     monthlyPrice: 1,
     yearlyPrice: 10,
   },
+  infoText: 'Access to multiplayer games',
 };
 export const largerStorage = {
   prices: {
     monthlyPrice: 2,
     yearlyPrice: 20,
   },
+  infoText: 'Extra 1TB of cloud save',
 };
 export const customizableProfile = {
   prices: {
     monthlyPrice: 2,
     yearlyPrice: 20,
   },
+  infoText: 'Custom theme on your profile',
 };
