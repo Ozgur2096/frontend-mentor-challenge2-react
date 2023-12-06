@@ -3,10 +3,11 @@ import { GlobalContext } from '../../globalContext/GlobalContext';
 import { plans } from '../../constants';
 
 export const SelectPlan = () => {
-  const { setSelectedPlan } = useContext(GlobalContext);
+  const { selectedPlan, setSelectedPlan } = useContext(GlobalContext);
 
   const [plansArray, setPlansArray] = useState(plans);
   const [isMonthly, setIsMonthly] = useState(true);
+  const [activePlan, setActivePlan] = useState('');
 
   const toggleMonthlyYearly = () => {
     setIsMonthly(!isMonthly);
@@ -29,10 +30,13 @@ export const SelectPlan = () => {
         <div className='select-plan-box-container'>
           {plansArray.map((item, index) => (
             <div
-              className='select-plan-box'
+              className={`select-plan-box ${
+                activePlan === item.planName ? 'active' : ''
+              }`}
               key={index}
               onClick={() => {
                 setSelectedPlan(item);
+                setActivePlan(item.planName);
               }}
             >
               <div

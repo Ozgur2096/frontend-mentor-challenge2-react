@@ -96,12 +96,17 @@ body {
   justify-content: space-between;
 }
 .select-plan-box {
-  border: var(--marine-blue) solid 1px;
+  border: var(--cool-gray) solid 1px;
+  color: var(--marine-blue);
   border-radius: 5px;
   padding: 10px;
   width: 80px;
   height: 100px;
   cursor: pointer;
+}
+.active {
+  background-color: var(--magnolia);
+  border: var(--marine-blue) solid 1px;
 }
 .plan-icon {
   height: 40px;
