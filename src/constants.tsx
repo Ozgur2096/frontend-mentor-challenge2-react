@@ -1,21 +1,27 @@
+// main plans
 export const arcade = {
+  isChosenMonthly: true,
   prices: {
     monthlyPrice: 9,
     yearlyPrice: 90,
   },
 };
 export const advanced = {
+  isChosenMonthly: true,
   prices: {
     monthlyPrice: 12,
     yearlyPrice: 120,
   },
 };
 export const pro = {
+  isChosenMonthly: true,
   prices: {
     monthlyPrice: 15,
     yearlyPrice: 150,
   },
 };
+
+// extra services
 export const onlineService = {
   prices: {
     monthlyPrice: 1,

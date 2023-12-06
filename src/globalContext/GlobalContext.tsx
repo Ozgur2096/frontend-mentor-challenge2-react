@@ -4,6 +4,16 @@ import React, { useState, createContext, ReactNode } from 'react';
 interface ContextValue {
   mainContentIndex: number;
   changeMainContentIndex: (n: number) => void;
+  plan: {
+    isChosenMonthly: boolean;
+    prices: { monthlyPrice: number; yearlyPrice: number };
+  };
+  setPlan: React.Dispatch<
+    React.SetStateAction<{
+      isChosenMonthly: boolean;
+      prices: { monthlyPrice: number; yearlyPrice: number };
+    }>
+  >;
 }
 interface GlobalContextProps {
   children: ReactNode;
@@ -12,12 +22,27 @@ interface GlobalContextProps {
 export const GlobalContext = createContext<ContextValue>({
   mainContentIndex: 1,
   changeMainContentIndex: (newIndex: number) => {},
+  plan: {
+    isChosenMonthly: true,
+    prices: {
+      monthlyPrice: 0,
+      yearlyPrice: 0,
+    },
+  },
+  setPlan: () => {},
 });
 
 export const GlobalContextProvider: React.FC<GlobalContextProps> = ({
   children,
 }) => {
   const [mainContentIndex, setMainContentIndex] = useState(1);
+  const [plan, setPlan] = useState({
+    isChosenMonthly: true,
+    prices: {
+      monthlyPrice: 0,
+      yearlyPrice: 0,
+    },
+  });
 
   const changeMainContentIndex = (newIndex: number) => {
     setMainContentIndex(newIndex);
@@ -26,6 +51,8 @@ export const GlobalContextProvider: React.FC<GlobalContextProps> = ({
   const contextValue: ContextValue = {
     mainContentIndex,
     changeMainContentIndex,
+    plan,
+    setPlan,
   };
 
   return (

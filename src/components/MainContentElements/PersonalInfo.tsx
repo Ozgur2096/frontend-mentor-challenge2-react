@@ -1,4 +1,7 @@
+import { useState } from 'react';
+
 export const PersonalInfo = () => {
+  const [warning, setWarning] = useState(false);
   return (
     <main className='main-content-container'>
       <h2>Personal info</h2>
@@ -7,14 +10,14 @@ export const PersonalInfo = () => {
         <div>
           <div className='input-label'>
             <label htmlFor='name'>Name</label>{' '}
-            <div className='warning'>This field is required</div>
+            {warning && <div className='warning'>This field is required</div>}
           </div>
           <input type='text' id='name' placeholder='e.g. Stephen King' />
         </div>
         <div>
           <div className='input-label'>
             <label htmlFor='email'>Email Address</label>
-            <div className='warning'>This field is required</div>
+            {warning && <div className='warning'>This field is required</div>}
           </div>
           <input
             type='email'
@@ -25,7 +28,7 @@ export const PersonalInfo = () => {
         <div>
           <div className='input-label'>
             <label htmlFor='tel'>Phone Number</label>
-            <div className='warning'>This field is required</div>
+            {warning && <div className='warning'>This field is required</div>}
           </div>
           <input type='tel' id='tel' placeholder='e.g. +1 234 567 890' />
         </div>
