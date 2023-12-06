@@ -3,9 +3,13 @@ import { GlobalContext } from '../../globalContext/GlobalContext';
 import { arcade, advanced, pro } from '../../constants';
 
 export const SelectPlan = () => {
-  const { setPlan } = useContext(GlobalContext);
+  const { setPlan, plan } = useContext(GlobalContext);
 
-  // const handleClickPlan = () => {};
+  const toggleMonthlyYearly = () => {
+    setPlan(prevPlan => {
+      return { ...prevPlan, isChosenMonthly: !prevPlan.isChosenMonthly };
+    });
+  };
   return (
     <main className='main-content-container'>
       <h2>Select your plan</h2>
@@ -42,7 +46,16 @@ export const SelectPlan = () => {
         </div>
         <div className='select-plan-toggle'>
           <p>Monthly</p>
-          <div className='select-plan-toggle-button'></div>
+          <div
+            className={`select-plan-toggle-button-container ${
+              !plan.isChosenMonthly && 'isYearly'
+            }`}
+            onClick={() => {
+              toggleMonthlyYearly();
+            }}
+          >
+            <div className='select-plan-toggle-button'></div>
+          </div>
           <p>Yearly</p>
         </div>
       </div>
