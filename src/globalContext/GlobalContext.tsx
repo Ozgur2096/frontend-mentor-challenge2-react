@@ -16,6 +16,7 @@ export const GlobalContext = createContext<ContextValue>({
   mainContentIndex: 1,
   changeMainContentIndex: (newIndex: number) => {},
   selectedPlan: {
+    planName: '',
     isChosenMonthly: true,
     prices: {
       monthlyPrice: 0,
@@ -30,6 +31,7 @@ export const GlobalContextProvider: React.FC<GlobalContextProps> = ({
 }) => {
   const [mainContentIndex, setMainContentIndex] = useState(1);
   const [selectedPlan, setSelectedPlan] = useState({
+    planName: '',
     isChosenMonthly: true,
     prices: {
       monthlyPrice: 0,

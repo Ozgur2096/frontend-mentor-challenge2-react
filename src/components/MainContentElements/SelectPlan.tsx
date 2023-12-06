@@ -3,7 +3,7 @@ import { GlobalContext } from '../../globalContext/GlobalContext';
 import { plans } from '../../constants';
 
 export const SelectPlan = () => {
-  const { selectedPlan, setSelectedPlan } = useContext(GlobalContext);
+  const { setSelectedPlan } = useContext(GlobalContext);
 
   const [plansArray, setPlansArray] = useState(plans);
   const [isMonthly, setIsMonthly] = useState(true);
