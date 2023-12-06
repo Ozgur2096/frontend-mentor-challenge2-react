@@ -107,6 +107,10 @@ body {
   height: 40px;
   width: 40px;
 }
+.free {
+  font-size: small;
+  color: var(--marine-blue);
+}
 .select-plan-toggle {
   padding: 10px;
   border-radius: 5px;

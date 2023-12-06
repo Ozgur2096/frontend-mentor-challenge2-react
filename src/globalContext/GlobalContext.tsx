@@ -5,8 +5,8 @@ import { Plan } from '../interfaces';
 interface ContextValue {
   mainContentIndex: number;
   changeMainContentIndex: (n: number) => void;
-  plan: Plan;
-  setPlan: React.Dispatch<React.SetStateAction<Plan>>;
+  selectedPlan: Plan;
+  setSelectedPlan: React.Dispatch<React.SetStateAction<Plan>>;
 }
 interface GlobalContextProps {
   children: ReactNode;
@@ -15,21 +15,21 @@ interface GlobalContextProps {
 export const GlobalContext = createContext<ContextValue>({
   mainContentIndex: 1,
   changeMainContentIndex: (newIndex: number) => {},
-  plan: {
+  selectedPlan: {
     isChosenMonthly: true,
     prices: {
       monthlyPrice: 0,
       yearlyPrice: 0,
     },
   },
-  setPlan: () => {},
+  setSelectedPlan: () => {},
 });
 
 export const GlobalContextProvider: React.FC<GlobalContextProps> = ({
   children,
 }) => {
   const [mainContentIndex, setMainContentIndex] = useState(1);
-  const [plan, setPlan] = useState({
+  const [selectedPlan, setSelectedPlan] = useState({
     isChosenMonthly: true,
     prices: {
       monthlyPrice: 0,
@@ -44,8 +44,8 @@ export const GlobalContextProvider: React.FC<GlobalContextProps> = ({
   const contextValue: ContextValue = {
     mainContentIndex,
     changeMainContentIndex,
-    plan,
-    setPlan,
+    selectedPlan,
+    setSelectedPlan,
   };
 
   return (

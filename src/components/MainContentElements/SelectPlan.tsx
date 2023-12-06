@@ -1,14 +1,24 @@
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
 import { GlobalContext } from '../../globalContext/GlobalContext';
 import { plans } from '../../constants';
 
 export const SelectPlan = () => {
-  const { setPlan, plan } = useContext(GlobalContext);
+  const { setSelectedPlan } = useContext(GlobalContext);
+
+  const [plansArray, setPlansArray] = useState(plans);
+  const [isMonthly, setIsMonthly] = useState(true);
 
   const toggleMonthlyYearly = () => {
-    setPlan(prevPlan => {
-      return { ...prevPlan, isChosenMonthly: !prevPlan.isChosenMonthly };
-    });
+    setIsMonthly(!isMonthly);
+
+    setPlansArray(
+      plansArray.map(plan => ({ ...plan, isChosenMonthly: !isMonthly }))
+    );
+
+    setSelectedPlan(prevPlan => ({
+      ...prevPlan,
+      isChosenMonthly: !prevPlan.isChosenMonthly,
+    }));
   };
 
   return (
@@ -17,12 +27,12 @@ export const SelectPlan = () => {
       <p>You have the option of monthly or yearly billing.</p>
       <div>
         <div className='select-plan-box-container'>
-          {plans.map((item, index) => (
+          {plansArray.map((item, index) => (
             <div
               className='select-plan-box'
               key={index}
               onClick={() => {
-                setPlan(item);
+                setSelectedPlan(item);
               }}
             >
               <div
@@ -30,6 +40,14 @@ export const SelectPlan = () => {
                 dangerouslySetInnerHTML={{ __html: item.image }}
               />
               <div>{item.planName}</div>
+              <div>
+                {item.isChosenMonthly
+                  ? item.prices.monthlyPrice
+                  : item.prices.yearlyPrice}
+              </div>
+              {!item.isChosenMonthly && (
+                <div className='free'>2 months free</div>
+              )}
             </div>
           ))}
         </div>
@@ -37,7 +55,7 @@ export const SelectPlan = () => {
           <p>Monthly</p>
           <div
             className={`select-plan-toggle-button-container${
-              plan.isChosenMonthly ? '' : ' isYearly'
+              isMonthly ? '' : ' isYearly'
             }`}
             onClick={() => {
               toggleMonthlyYearly();
