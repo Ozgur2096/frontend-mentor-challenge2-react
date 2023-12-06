@@ -1,19 +1,12 @@
 import React, { useState, createContext, ReactNode } from 'react';
+import { Plan } from '../interfaces';
 
 // Interfaces
 interface ContextValue {
   mainContentIndex: number;
   changeMainContentIndex: (n: number) => void;
-  plan: {
-    isChosenMonthly: boolean;
-    prices: { monthlyPrice: number; yearlyPrice: number };
-  };
-  setPlan: React.Dispatch<
-    React.SetStateAction<{
-      isChosenMonthly: boolean;
-      prices: { monthlyPrice: number; yearlyPrice: number };
-    }>
-  >;
+  plan: Plan;
+  setPlan: React.Dispatch<React.SetStateAction<Plan>>;
 }
 interface GlobalContextProps {
   children: ReactNode;

@@ -103,22 +103,9 @@ body {
   height: 100px;
   cursor: pointer;
 }
-.arcade-image {
-  height: 30px;
-  width: 30px;
-  background: url(../assets/images/icon-arcade.svg) no-repeat center
-    center/cover;
-}
-.advanced-image {
-  height: 30px;
-  width: 30px;
-  background: url(../assets/images/icon-advanced.svg) no-repeat center
-    center/cover;
-}
-.pro-image {
-  height: 30px;
-  width: 30px;
-  background: url(../assets/images/icon-pro.svg) no-repeat center center/cover;
+.plan-icon {
+  height: 40px;
+  width: 40px;
 }
 .select-plan-toggle {
   padding: 10px;
@@ -137,7 +124,9 @@ body {
   background-color: var(--marine-blue);
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   padding: 0 4px;
+  transition: justify-content 0.8s ease;
 }
 .select-plan-toggle-button {
   width: 16px;
@@ -146,7 +135,7 @@ body {
   background-color: var(--alabaster);
 }
 .isYearly {
-  justify-content: right;
+  justify-content: flex-end;
 }
 /* Thank you page */
 .thank-you-container {
