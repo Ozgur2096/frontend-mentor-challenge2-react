@@ -65,7 +65,7 @@ export const PersonalInfo = () => {
         </div>
       </main>
       <div className='buttons-container'>
-        <NextStepPersonalInfo />
+        <NextStepPersonalInfo setWarnings={setWarnings} />
       </div>
     </>
   );

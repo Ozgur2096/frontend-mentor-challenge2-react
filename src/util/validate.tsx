@@ -12,7 +12,7 @@ export type Warning = {
 };
 
 export const validatePersonalInfo = () => {
-  const warningMessages: Warning[] = [
+  let warningMessages: Warning[] = [
     {
       inputName: 'name',
       warningType: 'empty-field',

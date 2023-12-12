@@ -1,8 +1,15 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { GlobalContext } from '../../globalContext/GlobalContext';
+import { Warning } from '../../util/validate';
 import { validatePersonalInfo } from '../../util/validate';
 
-export const NextStepPersonalInfo = () => {
+interface NextStepPersonalInfoProps {
+  setWarnings: React.Dispatch<React.SetStateAction<Warning[]>>;
+}
+
+export const NextStepPersonalInfo: React.FC<NextStepPersonalInfoProps> = ({
+  setWarnings,
+}) => {
   const warnings = validatePersonalInfo();
 
   const { mainContentIndex, changeMainContentIndex } =
@@ -14,6 +21,7 @@ export const NextStepPersonalInfo = () => {
   return (
     <button
       onClick={() => {
+        setWarnings(warnings);
         if (warnings.length === 0) {
           clickNextStep();
         }
