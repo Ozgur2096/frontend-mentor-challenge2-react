@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { NextStep } from '../Buttons/NextStep';
+import { validatePersonalInfo, Warning } from '../../util/validate';
+import { NextStepPersonalInfo } from '../Buttons/NextStepPersonalInfo';
 
 export const PersonalInfo = () => {
-  const [warning, setWarning] = useState(false);
+  const definedWarnings = validatePersonalInfo();
+  const [warnings, setWarnings] = useState<Warning[]>([]);
   return (
     <>
       <main className='main-content-container'>
@@ -12,14 +14,33 @@ export const PersonalInfo = () => {
           <div>
             <div className='input-label'>
               <label htmlFor='name'>Name</label>{' '}
-              {warning && <div className='warning'>This field is required</div>}
+              {warnings.some(warning => warning.inputName === 'name') ? (
+                <div>
+                  {
+                    warnings.find(warning => warning.inputName === 'name')
+                      ?.warningMessage
+                  }
+                </div>
+              ) : null}
             </div>
-            <input type='text' id='name' placeholder='e.g. Stephen King' />
+            <input
+              type='text'
+              id='name'
+              placeholder='e.g. Stephen King'
+              onChange={e => {}}
+            />
           </div>
           <div>
             <div className='input-label'>
               <label htmlFor='email'>Email Address</label>
-              {warning && <div className='warning'>This field is required</div>}
+              {warnings.some(warning => warning.inputName === 'email') ? (
+                <div>
+                  {
+                    warnings.find(warning => warning.inputName === 'email')
+                      ?.warningMessage
+                  }
+                </div>
+              ) : null}
             </div>
             <input
               type='email'
@@ -30,14 +51,21 @@ export const PersonalInfo = () => {
           <div>
             <div className='input-label'>
               <label htmlFor='tel'>Phone Number</label>
-              {warning && <div className='warning'>This field is required</div>}
+              {warnings.some(warning => warning.inputName === 'tel') ? (
+                <div>
+                  {
+                    warnings.find(warning => warning.inputName === 'tel')
+                      ?.warningMessage
+                  }
+                </div>
+              ) : null}
             </div>
             <input type='tel' id='tel' placeholder='e.g. +1 234 567 890' />
           </div>
         </div>
       </main>
       <div className='buttons-container'>
-        <NextStep />
+        <NextStepPersonalInfo />
       </div>
     </>
   );

@@ -5,4 +5,29 @@
 
 // do not forget yup or zod
 
-export const validate = () => {};
+export type Warning = {
+  inputName: string;
+  warningType: string;
+  warningMessage: string;
+};
+
+export const validatePersonalInfo = () => {
+  const warningMessages: Warning[] = [
+    {
+      inputName: 'name',
+      warningType: 'empty-field',
+      warningMessage: 'This field is required',
+    },
+    {
+      inputName: 'email',
+      warningType: 'empty-field',
+      warningMessage: 'This field is required',
+    },
+    {
+      inputName: 'tel',
+      warningType: 'empty-field',
+      warningMessage: 'This field is required',
+    },
+  ];
+  return warningMessages;
+};
