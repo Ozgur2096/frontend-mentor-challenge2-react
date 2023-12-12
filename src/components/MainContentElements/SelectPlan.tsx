@@ -1,6 +1,8 @@
 import { useState, useContext } from 'react';
 import { GlobalContext } from '../../globalContext/GlobalContext';
 import { plans } from '../../constants';
+import { GoBack } from '../Buttons/GoBack';
+import { NextStep } from '../Buttons/NextStep';
 
 export const SelectPlan = () => {
   const { setSelectedPlan } = useContext(GlobalContext);
@@ -23,53 +25,59 @@ export const SelectPlan = () => {
   };
 
   return (
-    <main className='main-content-container'>
-      <h2>Select your plan</h2>
-      <p>You have the option of monthly or yearly billing.</p>
-      <div>
-        <div className='select-plan-box-container'>
-          {plansArray.map((item, index) => (
+    <>
+      <main className='main-content-container'>
+        <h2>Select your plan</h2>
+        <p>You have the option of monthly or yearly billing.</p>
+        <div>
+          <div className='select-plan-box-container'>
+            {plansArray.map((item, index) => (
+              <div
+                className={`select-plan-box ${
+                  activePlan === item.planName ? 'active' : ''
+                }`}
+                key={index}
+                onClick={() => {
+                  setSelectedPlan(item);
+                  setActivePlan(item.planName);
+                }}
+              >
+                <div
+                  className='plan-icon'
+                  dangerouslySetInnerHTML={{ __html: item.image }}
+                />
+                <div>{item.planName}</div>
+                <div>
+                  {item.isChosenMonthly
+                    ? item.prices.monthlyPrice
+                    : item.prices.yearlyPrice}
+                </div>
+                {!item.isChosenMonthly && (
+                  <div className='free'>2 months free</div>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className='select-plan-toggle'>
+            <p>Monthly</p>
             <div
-              className={`select-plan-box ${
-                activePlan === item.planName ? 'active' : ''
+              className={`select-plan-toggle-button-container${
+                isMonthly ? '' : ' isYearly'
               }`}
-              key={index}
               onClick={() => {
-                setSelectedPlan(item);
-                setActivePlan(item.planName);
+                toggleMonthlyYearly();
               }}
             >
-              <div
-                className='plan-icon'
-                dangerouslySetInnerHTML={{ __html: item.image }}
-              />
-              <div>{item.planName}</div>
-              <div>
-                {item.isChosenMonthly
-                  ? item.prices.monthlyPrice
-                  : item.prices.yearlyPrice}
-              </div>
-              {!item.isChosenMonthly && (
-                <div className='free'>2 months free</div>
-              )}
+              <div className='select-plan-toggle-button'></div>
             </div>
-          ))}
-        </div>
-        <div className='select-plan-toggle'>
-          <p>Monthly</p>
-          <div
-            className={`select-plan-toggle-button-container${
-              isMonthly ? '' : ' isYearly'
-            }`}
-            onClick={() => {
-              toggleMonthlyYearly();
-            }}
-          >
-            <div className='select-plan-toggle-button'></div>
+            <p>Yearly</p>
           </div>
-          <p>Yearly</p>
         </div>
+      </main>
+      <div className='buttons-container'>
+        <GoBack />
+        <NextStep />
       </div>
-    </main>
+    </>
   );
 };
