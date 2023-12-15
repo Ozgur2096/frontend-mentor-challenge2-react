@@ -3,8 +3,6 @@
 //   - The email address is not formatted correctly
 //   - A step is submitted, but no selection has been made
 
-// do not forget yup or zod
-
 export type Warning = {
   inputName: string;
   warningType: string;
