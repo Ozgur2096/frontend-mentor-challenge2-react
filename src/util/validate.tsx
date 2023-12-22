@@ -9,23 +9,24 @@ export type Warning = {
   warningMessage: string;
 };
 
+export const warningMessages: Warning[] = [
+  {
+    inputName: 'name',
+    warningType: 'empty-field',
+    warningMessage: 'This field is required',
+  },
+  {
+    inputName: 'email',
+    warningType: 'empty-field',
+    warningMessage: 'This field is required',
+  },
+  {
+    inputName: 'tel',
+    warningType: 'empty-field',
+    warningMessage: 'This field is required',
+  },
+];
+
 export const validatePersonalInfo = () => {
-  let warningMessages: Warning[] = [
-    {
-      inputName: 'name',
-      warningType: 'empty-field',
-      warningMessage: 'This field is required',
-    },
-    {
-      inputName: 'email',
-      warningType: 'empty-field',
-      warningMessage: 'This field is required',
-    },
-    {
-      inputName: 'tel',
-      warningType: 'empty-field',
-      warningMessage: 'This field is required',
-    },
-  ];
   return warningMessages;
 };

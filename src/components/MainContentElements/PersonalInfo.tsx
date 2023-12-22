@@ -1,5 +1,9 @@
 import { useState } from 'react';
-import { validatePersonalInfo, Warning } from '../../util/validate';
+import {
+  validatePersonalInfo,
+  Warning,
+  warningMessages,
+} from '../../util/validate';
 import { NextStepPersonalInfo } from '../Buttons/NextStepPersonalInfo';
 
 export const PersonalInfo = () => {
@@ -27,7 +31,9 @@ export const PersonalInfo = () => {
               type='text'
               id='name'
               placeholder='e.g. Stephen King'
-              onChange={e => {}}
+              onChange={e => {
+                console.log(e.target.value);
+              }}
             />
           </div>
           <div>
