@@ -7,7 +7,6 @@ import {
 import { NextStepPersonalInfo } from '../Buttons/NextStepPersonalInfo';
 
 export const PersonalInfo = () => {
-  const definedWarnings = validatePersonalInfo();
   const [warnings, setWarnings] = useState<Warning[]>([]);
   return (
     <>

@@ -27,6 +27,8 @@ export const warningMessages: Warning[] = [
   },
 ];
 
-export const validatePersonalInfo = () => {
-  return warningMessages;
+export const validatePersonalInfo = (warning: Warning) => {
+  let messages: Warning[] = [];
+  messages = warningMessages;
+  return messages;
 };

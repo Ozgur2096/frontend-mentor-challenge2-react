@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../../globalContext/GlobalContext';
-import { Warning } from '../../util/validate';
+import { Warning, warningMessages } from '../../util/validate';
 import { validatePersonalInfo } from '../../util/validate';
 
 interface NextStepPersonalInfoProps {
@@ -10,7 +10,7 @@ interface NextStepPersonalInfoProps {
 export const NextStepPersonalInfo: React.FC<NextStepPersonalInfoProps> = ({
   setWarnings,
 }) => {
-  const warnings = validatePersonalInfo();
+  const warnings = warningMessages;
 
   const { mainContentIndex, changeMainContentIndex } =
     useContext(GlobalContext);
