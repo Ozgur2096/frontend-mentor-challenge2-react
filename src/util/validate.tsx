@@ -27,8 +27,25 @@ export const warningMessages: Warning[] = [
   },
 ];
 
-export const validatePersonalInfo = (warning: Warning) => {
-  let messages: Warning[] = [];
-  messages = warningMessages;
-  return messages;
+export const validatePersonalInfo = (inputName: string, inputValue: string) => {
+  // let messages: Warning[] = [];
+  // messages = [...warningMessages];
+  console.log(inputName, inputValue);
+  console.log(warningMessages);
+  if (inputValue.length > 0) {
+    const warningIndex = warningMessages.findIndex(
+      warning => warning.inputName === inputName
+    );
+    warningMessages.splice(warningIndex, 1);
+  }
+  if (inputValue.length < 1) {
+    warningMessages.push({
+      inputName,
+      warningType: 'empty-field',
+      warningMessage: 'This field is required',
+    });
+  }
+  return warningMessages;
 };
+
+// TODO: warningMessages should be global context

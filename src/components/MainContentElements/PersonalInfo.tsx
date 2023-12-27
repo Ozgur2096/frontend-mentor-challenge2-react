@@ -31,7 +31,7 @@ export const PersonalInfo = () => {
               id='name'
               placeholder='e.g. Stephen King'
               onChange={e => {
-                console.log(e.target.value);
+                validatePersonalInfo(e.target.id, e.target.value);
               }}
             />
           </div>
@@ -51,6 +51,9 @@ export const PersonalInfo = () => {
               type='email'
               id='email'
               placeholder='e.g. stephenking@lorem.com'
+              onChange={e => {
+                validatePersonalInfo(e.target.id, e.target.value);
+              }}
             />
           </div>
           <div>
@@ -65,7 +68,14 @@ export const PersonalInfo = () => {
                 </div>
               ) : null}
             </div>
-            <input type='tel' id='tel' placeholder='e.g. +1 234 567 890' />
+            <input
+              type='tel'
+              id='tel'
+              placeholder='e.g. +1 234 567 890'
+              onChange={e => {
+                validatePersonalInfo(e.target.id, e.target.value);
+              }}
+            />
           </div>
         </div>
       </main>
