@@ -1,5 +1,5 @@
 import React, { useState, createContext, ReactNode } from 'react';
-import { Plan } from '../interfaces';
+import { Plan, Warning } from '../interfaces';
 
 // Interfaces
 interface ContextValue {
@@ -7,6 +7,8 @@ interface ContextValue {
   changeMainContentIndex: (n: number) => void;
   selectedPlan: Plan;
   setSelectedPlan: React.Dispatch<React.SetStateAction<Plan>>;
+  warningMessages: Warning[] | [];
+  setWarningMessages: React.Dispatch<React.SetStateAction<Warning[]>>;
 }
 interface GlobalContextProps {
   children: ReactNode;
@@ -24,6 +26,24 @@ export const GlobalContext = createContext<ContextValue>({
     },
   },
   setSelectedPlan: () => {},
+  warningMessages: [
+    {
+      inputName: 'name',
+      warningType: 'empty-field',
+      warningMessage: 'This field is required',
+    },
+    {
+      inputName: 'email',
+      warningType: 'empty-field',
+      warningMessage: 'This field is required',
+    },
+    {
+      inputName: 'tel',
+      warningType: 'empty-field',
+      warningMessage: 'This field is required',
+    },
+  ],
+  setWarningMessages: () => {},
 });
 
 export const GlobalContextProvider: React.FC<GlobalContextProps> = ({
@@ -38,7 +58,23 @@ export const GlobalContextProvider: React.FC<GlobalContextProps> = ({
       yearlyPrice: 0,
     },
   });
-
+  const [warningMessages, setWarningMessages] = useState<Warning[]>([
+    {
+      inputName: 'name',
+      warningType: 'empty-field',
+      warningMessage: 'This field is required',
+    },
+    {
+      inputName: 'email',
+      warningType: 'empty-field',
+      warningMessage: 'This field is required',
+    },
+    {
+      inputName: 'tel',
+      warningType: 'empty-field',
+      warningMessage: 'This field is required',
+    },
+  ]);
   const changeMainContentIndex = (newIndex: number) => {
     setMainContentIndex(newIndex);
   };
@@ -48,6 +84,8 @@ export const GlobalContextProvider: React.FC<GlobalContextProps> = ({
     changeMainContentIndex,
     selectedPlan,
     setSelectedPlan,
+    warningMessages,
+    setWarningMessages,
   };
 
   return (

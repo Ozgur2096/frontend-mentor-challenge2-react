@@ -1,12 +1,11 @@
-import { useState } from 'react';
-import {
-  validatePersonalInfo,
-  Warning,
-  warningMessages,
-} from '../../util/validate';
+import { useState, useContext } from 'react';
+import { validatePersonalInfo } from '../../util/validate';
+import { Warning } from '../../interfaces';
 import { NextStepPersonalInfo } from '../Buttons/NextStepPersonalInfo';
+import { GlobalContext } from '../../globalContext/GlobalContext';
 
 export const PersonalInfo = () => {
+  const { warningMessages, setWarningMessages } = useContext(GlobalContext);
   const [warnings, setWarnings] = useState<Warning[]>([]);
   return (
     <>
@@ -17,13 +16,8 @@ export const PersonalInfo = () => {
           <div>
             <div className='input-label'>
               <label htmlFor='name'>Name</label>{' '}
-              {warnings.some(warning => warning.inputName === 'name') ? (
-                <div>
-                  {
-                    warnings.find(warning => warning.inputName === 'name')
-                      ?.warningMessage
-                  }
-                </div>
+              {validatePersonalInfo(warnings, 'name') ? (
+                <div>{validatePersonalInfo(warnings, 'name')}</div>
               ) : null}
             </div>
             <input
@@ -31,20 +25,15 @@ export const PersonalInfo = () => {
               id='name'
               placeholder='e.g. Stephen King'
               onChange={e => {
-                validatePersonalInfo(e.target.id, e.target.value);
+                validatePersonalInfo(warnings, e.target.id);
               }}
             />
           </div>
           <div>
             <div className='input-label'>
               <label htmlFor='email'>Email Address</label>
-              {warnings.some(warning => warning.inputName === 'email') ? (
-                <div>
-                  {
-                    warnings.find(warning => warning.inputName === 'email')
-                      ?.warningMessage
-                  }
-                </div>
+              {validatePersonalInfo(warnings, 'email') ? (
+                <div>{validatePersonalInfo(warnings, 'email')}</div>
               ) : null}
             </div>
             <input
@@ -52,20 +41,15 @@ export const PersonalInfo = () => {
               id='email'
               placeholder='e.g. stephenking@lorem.com'
               onChange={e => {
-                validatePersonalInfo(e.target.id, e.target.value);
+                validatePersonalInfo(warnings, e.target.id);
               }}
             />
           </div>
           <div>
             <div className='input-label'>
               <label htmlFor='tel'>Phone Number</label>
-              {warnings.some(warning => warning.inputName === 'tel') ? (
-                <div>
-                  {
-                    warnings.find(warning => warning.inputName === 'tel')
-                      ?.warningMessage
-                  }
-                </div>
+              {validatePersonalInfo(warnings, 'tel') ? (
+                <div>{validatePersonalInfo(warnings, 'tel')}</div>
               ) : null}
             </div>
             <input
@@ -73,7 +57,7 @@ export const PersonalInfo = () => {
               id='tel'
               placeholder='e.g. +1 234 567 890'
               onChange={e => {
-                validatePersonalInfo(e.target.id, e.target.value);
+                validatePersonalInfo(warnings, e.target.id);
               }}
             />
           </div>
