@@ -25,7 +25,20 @@ export const PersonalInfo = () => {
               id='name'
               placeholder='e.g. Stephen King'
               onChange={e => {
-                validatePersonalInfo(warnings, e.target.id);
+                e.target.value.length > 0
+                  ? setWarningMessages(
+                      warningMessages.filter(
+                        warning => warning.inputName !== 'name'
+                      )
+                    )
+                  : setWarningMessages(prev => [
+                      ...prev,
+                      {
+                        inputName: 'name',
+                        warningType: 'empty-field',
+                        warningMessage: 'This field is required',
+                      },
+                    ]);
               }}
             />
           </div>
@@ -41,7 +54,20 @@ export const PersonalInfo = () => {
               id='email'
               placeholder='e.g. stephenking@lorem.com'
               onChange={e => {
-                validatePersonalInfo(warnings, e.target.id);
+                e.target.value.length > 0
+                  ? setWarningMessages(
+                      warningMessages.filter(
+                        warning => warning.inputName !== 'email'
+                      )
+                    )
+                  : setWarningMessages(prev => [
+                      ...prev,
+                      {
+                        inputName: 'email',
+                        warningType: 'empty-field',
+                        warningMessage: 'This field is required',
+                      },
+                    ]);
               }}
             />
           </div>
@@ -57,7 +83,20 @@ export const PersonalInfo = () => {
               id='tel'
               placeholder='e.g. +1 234 567 890'
               onChange={e => {
-                validatePersonalInfo(warnings, e.target.id);
+                e.target.value.length > 0
+                  ? setWarningMessages(
+                      warningMessages.filter(
+                        warning => warning.inputName !== 'tel'
+                      )
+                    )
+                  : setWarningMessages(prev => [
+                      ...prev,
+                      {
+                        inputName: 'tel',
+                        warningType: 'empty-field',
+                        warningMessage: 'This field is required',
+                      },
+                    ]);
               }}
             />
           </div>

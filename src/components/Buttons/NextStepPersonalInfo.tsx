@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../../globalContext/GlobalContext';
 import { Warning } from '../../interfaces';
-import { validatePersonalInfo } from '../../util/validate';
 
 interface NextStepPersonalInfoProps {
   setWarnings: React.Dispatch<React.SetStateAction<Warning[]>>;
@@ -27,6 +26,23 @@ export const NextStepPersonalInfo: React.FC<NextStepPersonalInfoProps> = ({
         setWarnings(warningMessages);
         if (warningMessages.length === 0) {
           clickNextStep();
+          setWarningMessages([
+            {
+              inputName: 'name',
+              warningType: 'empty-field',
+              warningMessage: 'This field is required',
+            },
+            {
+              inputName: 'email',
+              warningType: 'empty-field',
+              warningMessage: 'This field is required',
+            },
+            {
+              inputName: 'tel',
+              warningType: 'empty-field',
+              warningMessage: 'This field is required',
+            },
+          ]);
         }
       }}
     >
