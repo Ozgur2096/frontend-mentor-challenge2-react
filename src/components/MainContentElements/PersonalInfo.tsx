@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { validatePersonalInfo } from '../../util/validate';
+import { isEmail, validatePersonalInfo } from '../../util/validate';
 import { Warning } from '../../interfaces';
 import { NextStepPersonalInfo } from '../Buttons/NextStepPersonalInfo';
 import { GlobalContext } from '../../globalContext/GlobalContext';
@@ -68,6 +68,16 @@ export const PersonalInfo = () => {
                         warningMessage: 'This field is required',
                       },
                     ]);
+                if (!isEmail(e.target.value)) {
+                  setWarningMessages(prev => [
+                    ...prev,
+                    {
+                      inputName: 'email',
+                      warningType: 'empty-field',
+                      warningMessage: 'Invalid email address',
+                    },
+                  ]);
+                }
               }}
             />
           </div>

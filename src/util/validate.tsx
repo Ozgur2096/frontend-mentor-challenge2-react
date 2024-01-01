@@ -15,3 +15,11 @@ export const validatePersonalInfo = (
     return false;
   }
 };
+
+export const isEmail = (input: string) => {
+  // Regular expression pattern to match an email address
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Check if the input matches the email pattern
+  return emailPattern.test(input);
+};
