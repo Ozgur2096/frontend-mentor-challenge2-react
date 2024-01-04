@@ -22,7 +22,6 @@ export const NextStepPersonalInfo: React.FC<NextStepPersonalInfoProps> = ({
   return (
     <button
       onClick={() => {
-        console.log(warningMessages);
         setWarnings(warningMessages);
         if (warningMessages.length === 0) {
           clickNextStep();
