@@ -35,24 +35,29 @@ export const plans = [
 ];
 
 // extra services
-export const onlineService = {
-  prices: {
-    monthlyPrice: 1,
-    yearlyPrice: 10,
+export const extraServices = [
+  {
+    serviceName: 'Online service',
+    prices: {
+      monthlyPrice: 1,
+      yearlyPrice: 10,
+    },
+    infoText: 'Access to multiplayer games',
   },
-  infoText: 'Access to multiplayer games',
-};
-export const largerStorage = {
-  prices: {
-    monthlyPrice: 2,
-    yearlyPrice: 20,
+  {
+    serviceName: 'Larger storage',
+    prices: {
+      monthlyPrice: 2,
+      yearlyPrice: 20,
+    },
+    infoText: 'Extra 1TB of cloud save',
   },
-  infoText: 'Extra 1TB of cloud save',
-};
-export const customizableProfile = {
-  prices: {
-    monthlyPrice: 2,
-    yearlyPrice: 20,
+  {
+    serviceName: 'Customizable profile',
+    prices: {
+      monthlyPrice: 2,
+      yearlyPrice: 20,
+    },
+    infoText: 'Custom theme on your profile',
   },
-  infoText: 'Custom theme on your profile',
-};
+];

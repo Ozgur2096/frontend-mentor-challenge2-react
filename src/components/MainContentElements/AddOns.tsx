@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GoBack } from '../Buttons/GoBack';
 import { NextStep } from '../Buttons/NextStep';
+import { extraServices } from '../../constants';
 
 export const AddOns = () => {
+  const [isMonthly, setIsMonthly] = useState(true);
   return (
     <>
       <main className='main-content-container'>
