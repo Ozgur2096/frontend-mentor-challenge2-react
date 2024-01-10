@@ -1,25 +1,30 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { GoBack } from '../Buttons/GoBack';
 import { NextStep } from '../Buttons/NextStep';
 import { extraServices } from '../../constants';
+import { GlobalContext } from '../../globalContext/GlobalContext';
 
 export const AddOns = () => {
-  const [isMonthly, setIsMonthly] = useState(true);
+  const { isMonthly } = useContext(GlobalContext);
   return (
     <>
       <main className='main-content-container'>
         <h2>Pick add-ons</h2>
         <p>Add-ons help enhance your gaming experience.</p>
         <div>
-          <div>
-            Online service Access to multiplayer games <div>+$1/mo</div>
-          </div>
-          <div>
-            Larger storage Extra 1TB of cloud save <div>+$2/mo</div>
-          </div>
-          <div>
-            Customizable Profile Custom theme on your profile <div>+$2/mo</div>
-          </div>
+          {extraServices.map((service, index) => (
+            <div key={index} className='service-box'>
+              <div>
+                <div>{service.serviceName}</div>
+                <div>{service.infoText}</div>
+              </div>
+              <div>
+                {isMonthly
+                  ? `+$${service.prices.monthlyPrice}/mo`
+                  : `+$${service.prices.yearlyPrice}/yr`}
+              </div>
+            </div>
+          ))}
         </div>
       </main>
       <div className='buttons-container'>
