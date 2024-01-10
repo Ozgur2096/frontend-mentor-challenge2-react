@@ -5,10 +5,10 @@ import { GoBack } from '../Buttons/GoBack';
 import { NextStep } from '../Buttons/NextStep';
 
 export const SelectPlan = () => {
-  const { setSelectedPlan } = useContext(GlobalContext);
+  const { setSelectedPlan, isMonthly, setIsMonthly } =
+    useContext(GlobalContext);
 
   const [plansArray, setPlansArray] = useState(plans);
-  const [isMonthly, setIsMonthly] = useState(true);
   const [activePlan, setActivePlan] = useState('');
 
   const toggleMonthlyYearly = () => {

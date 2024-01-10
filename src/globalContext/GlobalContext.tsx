@@ -9,6 +9,8 @@ interface ContextValue {
   setSelectedPlan: React.Dispatch<React.SetStateAction<Plan>>;
   warningMessages: Warning[] | [];
   setWarningMessages: React.Dispatch<React.SetStateAction<Warning[]>>;
+  isMonthly: boolean;
+  setIsMonthly: React.Dispatch<React.SetStateAction<boolean>>;
 }
 interface GlobalContextProps {
   children: ReactNode;
@@ -44,11 +46,14 @@ export const GlobalContext = createContext<ContextValue>({
     },
   ],
   setWarningMessages: () => {},
+  isMonthly: true,
+  setIsMonthly: () => {},
 });
 
 export const GlobalContextProvider: React.FC<GlobalContextProps> = ({
   children,
 }) => {
+  const [isMonthly, setIsMonthly] = useState(true);
   const [mainContentIndex, setMainContentIndex] = useState(1);
   const [selectedPlan, setSelectedPlan] = useState({
     planName: '',
@@ -86,6 +91,8 @@ export const GlobalContextProvider: React.FC<GlobalContextProps> = ({
     setSelectedPlan,
     warningMessages,
     setWarningMessages,
+    isMonthly,
+    setIsMonthly,
   };
 
   return (
