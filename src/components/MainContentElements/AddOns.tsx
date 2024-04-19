@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { GoBack } from '../Buttons/GoBack';
 import { NextStep } from '../Buttons/NextStep';
 import { extraServices } from '../../constants';
@@ -14,6 +14,7 @@ export const AddOns = () => {
         <div>
           {extraServices.map((service, index) => (
             <div key={index} className='service-box'>
+              <input type='checkbox' />
               <div>
                 <div>{service.serviceName}</div>
                 <div>{service.infoText}</div>
